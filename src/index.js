@@ -9,7 +9,7 @@ const route = require('./routes');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-            app.use(
+app.use(
     express.urlencoded({
         extended: true,
     }),
@@ -33,6 +33,6 @@ app.set('views', path.join(__dirname, 'resources/views')); // config 'views' fol
 // routes init
 route(app);
 
-         app.listen(port, () => {
+app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 });
