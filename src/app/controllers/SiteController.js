@@ -1,13 +1,13 @@
 class SiteController {
-  // [GET] /news
-  index(req, res) {
-    return res.render("home");
-  }
+    // [GET] /news
+    index(req, res) {
+        return res.render('home');
+    }
 
-  // [GET] /search
-  search(req,res) {
-    return res.render("search");
-  }
+    // [GET] /search
+    search(req, res) {
+        return res.render('search');
+    }
 }
 
-module.exports = new SiteController;
+module.exports = new SiteController();
