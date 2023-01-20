@@ -6,6 +6,10 @@ const app = express();
 const port = 3000;
 
 const route = require('./routes');
+const db = require('./config/db');
+
+// connect db
+db.connect();
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -28,11 +32,11 @@ app.engine(
 ); // create engine and then name it 'hbs', extname is the way we config extension name for template files. It's must
 // be same the engine name
 app.set('view engine', 'hbs'); // use view engine name 'hbs'
-app.set('views', path.join(__dirname, 'resources/views')); // config 'views' folder direction
+app.set('views', path.join(__dirname, 'resources', 'views')); // config 'views' folder direction
 
 // routes init
 route(app);
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
+    console.log(`App listening at http://localhost:${port}`);
 });
