@@ -4,6 +4,7 @@ const { engine } = require('express-handlebars');
 const path = require('path');
 const app = express();
 const port = 3000;
+const methodOverride = require('method-override');
 
 const route = require('./routes');
 const db = require('./config/db');
@@ -18,7 +19,10 @@ app.use(
         extended: true,
     }),
 );
+
 app.use(express.json());
+
+app.use(methodOverride('_method'));
 
 // HTTP logger
 app.use(morgan('combined'));
@@ -28,6 +32,9 @@ app.engine(
     'hbs',
     engine({
         extname: '.hbs',
+        helpers: {
+            sum: (a, b) => a + b,
+        },
     }),
 ); // create engine and then name it 'hbs', extname is the way we config extension name for template files. It's must
 // be same the engine name
